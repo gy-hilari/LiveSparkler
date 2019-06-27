@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Index</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'login_app/css/style.css'%}">
+    <script src="{%static 'login_app/js/jquery.js'%}"></script>
+    <script src="{%static 'login_app/js/gabe-query.js'%}"></script>
+
+</head>
+<body>
+
+    <h3>
+        Hello {{user.first_name}} {{user.last_name}}, your id is: {{user_id}}
+    </h3>
+    <a href="/logout_user">Logout</a>
+
+</body>
+</html>

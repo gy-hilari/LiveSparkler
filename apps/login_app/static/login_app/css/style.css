@@ -1,0 +1,275 @@
+/* body{
+    background-color: blue;
+} */
+
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button:focus, input:focus, a:focus, textarea:focus{
+    outline: 0;
+}
+
+/* dev tools  */
+
+/* .greenoutline{
+    outline: 1px dotted green;
+}
+
+.orangeoutline{
+    outline: 1px dotted orange;
+}
+
+.redoutline{
+    outline: 1px dotted red;
+}
+
+.greentext{
+    color: green;
+} */
+
+/* ** */
+
+#container{
+    width: 970px;
+    min-height: 520px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+#container a{
+    display: block;
+}
+
+.user-form{
+    display: inline-block;
+    min-width: 300px;
+    text-align: center;
+    vertical-align: top;
+
+    padding: 20px 15px 20px 15px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.login-user-form{
+    margin-top: 140px;
+    display: inline-block;
+    width: 400px;
+    text-align: center;
+    vertical-align: middle;
+
+    padding: 20px 15px 20px 15px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.user-form input, .user-form select, .user-form form, .user-form label{
+    display: block;
+    margin: 10px auto 0px auto;
+    text-align: center;
+}
+
+.user-form-input{
+    font-size: 185%; 
+    text-align: center;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+
+.user-form-submit{
+    font-size: 110%;
+    color: white;
+    background-image: linear-gradient(rgb(119, 119, 211), rgb(66, 66, 119));
+    border-radius: 15px;
+}
+
+.user-form-submit form,.user-form-submit a{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.user-form-submit a{
+    color: white;
+    text-decoration: none;
+}
+
+.user-form-textbox{
+    resize: none;
+    width: 400px;
+    height: 164px;
+    font-size: 25px;
+    overflow: auto;
+    text-align: center;
+    border-radius: 8px;
+}
+
+#error-messages{
+    display: block;
+    text-align: center;
+}
+
+#display-table-top{
+    width: 400px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 15px auto 0px auto;
+}
+
+#display-table-top tbody{
+    width: 520%;
+    display:block;
+    overflow: auto;
+    height: 350px;
+}
+
+#display-table-top thead tr th{
+    width: 220px;
+}
+
+
+#display-table-top tbody tr td{
+    height: 80px;
+    width: 220px;
+}
+
+#display-table-bottom{
+    width: 400px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 15px auto 0px auto;
+}
+
+#display-table-bottom tbody{
+    width: 598%;
+    display:block;
+    overflow: auto;
+    height: 350px;
+}
+
+#display-table-bottom thead tr th{
+    width: 160px;
+}
+
+
+#display-table-bottom tbody tr td{
+    height: 80px;
+    width: 220px;
+}
+
+#user-interface form, #user-interface h2{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#user-interface h2{
+    margin-right: 12%;
+}
+
+
+#message-ui{
+    height: 270px;
+}
+
+#message-ui #user-stats, #message-ui form{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#user-stats{
+    width: 400px;
+    height: 252px;
+    border: 1px dotted brown;
+    border-radius: 15px;
+}
+
+#message-display{
+    height: 540px;
+    overflow: auto;
+}
+
+#message-scroller{
+    width: 950px;
+    height: 520px;
+    margin: 10px auto 10px auto;
+    overflow: auto;
+}
+
+.message-bubble{
+    width: 800px;
+    min-height: 180px;
+    margin: 10px auto 10px auto;
+    padding: 10px;
+}
+/* 
+.message-bubble p{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 12px;
+    margin-bottom: 5px;
+} */
+
+.message-bubble p{
+    margin: 0px auto;
+}
+
+.message-bubble-data{
+    width: 706px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0px auto;
+}
+
+.message-bubble-data p, .message-bubble-data div{
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.message-bubble-data p{
+    padding: 0px 5px 0px 5px;
+}
+
+.message-bubble-data div{
+    width: 60px;
+    height: 60px;
+}
+
+.message-bubble-text{
+    width: 500px;
+    padding: 2px;
+}
+
+.message-bubble-interface{
+    width: 706px;
+    min-height: 60px;
+    line-height: 60px;
+    margin: 0px auto 0px auto;
+}
+
+.message-bubble-interface form{   
+    display: inline-block;
+    vertical-align: top;
+}
+
+.message-bubble-icons{
+    width: 706px;
+    min-height: 60px;
+    margin: 0px auto 0px auto;
+}
+
+.firework-icon{
+    width: 3%;
+}
+
+.firework-icon-med{
+    width: 80px;
+}
+
+.firework-count{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 12px 0px 12px;
+}
+

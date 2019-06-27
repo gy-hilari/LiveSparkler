@@ -1,0 +1,7 @@
+
+.vscode/$i
+*.swp
+*.sqlite
+*.sqlite3
+*.xcf
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_app/css/style.css' %}">
+    <script src="{% static 'login_app/js/jquery.js ' %}"></script>
+    <script src="{% static 'login_app/js/gabe-query.js ' %}"></script>
+
+</head>
+
+<body>
+
+
+    <div id="container">
+        <form action="/register_user" class="login-user-form" method="POST">
+            {% csrf_token %}
+            <input class="user-form-input" type="text" name="fname" placeholder="First Name">
+            <input class="user-form-input" type="text" name="lname" placeholder="Last Name">
+            <input class="user-form-input" type="text" name="email" placeholder="Email">
+            <input class="user-form-input" type="password" name="password" placeholder="Password">
+            <input class="user-form-input" type="password" name="confirm-password" placeholder="Confirm Password">
+            <input class="user-form-submit" type="submit" value="Register">
+        </form>
+        <form action="/login_user" class="login-user-form" method="POST">
+            {% csrf_token %}
+            <input class="user-form-input" type="text" name="email" placeholder="Email">
+            <input class="user-form-input" type="password" name="password" placeholder="Password">
+            <input class="user-form-submit" type="submit" value="Login">
+        </form>
+        {% if messages %}
+        {% for error in messages %}
+        <p>
+            {{error}}
+        </p>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+
+
+
+</body>
+
+</html>

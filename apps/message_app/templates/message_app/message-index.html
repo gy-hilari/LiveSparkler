@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Timeline Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_app/css/style.css' %}">
+    <script src="{% static 'login_app/js/jquery.js ' %}"></script>
+    <script src="{% static 'login_app/js/gabe-query.js ' %}"></script>
+    
+</head>
+
+<body>
+    
+    <div id="container" class="greenoutline">
+        <h3>
+            Hello {{user.first_name}} {{user.last_name}}, your id is: {{user_id}}
+        </h3>
+        <a href="/logout_user">Logout</a>
+        <hr>
+        
+        <div id="message-ui" class="orangeoutline">
+            <div id="user-stats">
+                <p>
+                    User: {{user.first_name}} {{user.last_name}}
+                </p>
+                <p>
+                    User ID: {{user_id}}
+                </p>
+                <p>
+                    User Level: {{user.user_level}}
+                </p>
+                <form action="/view_user_fireworks">
+                    <input type="submit" value="Inventory" class="user-form-submit">
+                </form>
+                <form action="/get_fireworks">
+                    <input type="submit" value="Get Fireworks!" class="user-form-submit">
+                </form>
+            </div>
+            <form action="/new_message" class="user-form message-form" method="POST">
+                {% csrf_token %}
+                <textarea class="user-form-textbox" name="message-text" id="" cols="30" rows="10" placeholder="New Message"></textarea>
+                <input type="submit" value="Submit" class="user-form-submit">
+            </form>
+        </div>
+        <div id="message-display" class="greenoutline">
+            <div id="message-scroller" class="orangeoutline">
+
+                {% for message in all_messages %}
+                <div class="message-bubble redoutline">
+                    <div class="message-bubble-data greenoutline">
+                        <div class="redoutline">
+                        </div>
+                        <p class="redoutline">
+                            {{message.user.first_name}} {{message.user.last_name}}
+                        </p>
+                        <div class="redoutline">
+                        </div>
+                    </div>
+                    <p class="message-bubble-text greenoutline">
+                        {{message.message}}
+                    </p>
+                    <div class="message-bubble-interface greenoutline">
+                        <form action="/view_message/{{message.id}}" method="post">
+                            {% csrf_token %}
+                            <input class="user-form-submit" type="submit" value="View Message">
+                        </form>
+                        {% if message.user == user %}
+                        <form action="/delete_message/{{message.id}}" method="post">
+                            {% csrf_token %}
+                            <input class="user-form-submit" type="submit" value="Delete Message">
+                        </form>
+                        {% endif %}
+                    </div>
+                    <div class="message-bubble-icons greenoutline">
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
