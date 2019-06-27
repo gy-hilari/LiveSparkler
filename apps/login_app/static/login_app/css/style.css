@@ -30,6 +30,15 @@ button:focus, input:focus, a:focus, textarea:focus{
 
 /* ** */
 
+.redtext{
+    color: red;
+}
+
+.boldtext{
+    font-weight: bold;
+}
+
+
 #container{
     width: 970px;
     min-height: 520px;
@@ -158,12 +167,12 @@ button:focus, input:focus, a:focus, textarea:focus{
     width: 220px;
 }
 
-#user-interface form, #user-interface h2{
+#user-interface form, #user-interface h3{
     display: inline-block;
     vertical-align: middle;
 }
 
-#user-interface h2{
+#user-interface h3{
     margin-right: 12%;
 }
 
@@ -180,8 +189,12 @@ button:focus, input:focus, a:focus, textarea:focus{
 #user-stats{
     width: 400px;
     height: 252px;
-    border: 1px dotted brown;
+    border: 1px solid black;
     border-radius: 15px;
+}
+
+#user-stats-header{
+    margin-top: 50px;
 }
 
 #message-display{

@@ -13,5 +13,6 @@ urlpatterns = [
 
     url(r'^get_fireworks$', views.get_fireworks),
     url(r'^view_user_fireworks$', views.view_user_fireworks),
+    url(r'^deploy_firework/(?P<message_id>\d+)/(?P<firework_name>\w+)$', views.deploy_firework),
 
 ]

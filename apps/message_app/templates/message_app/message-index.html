@@ -16,16 +16,20 @@
 <body>
     
     <div id="container" class="greenoutline">
-        <h3>
-            Hello {{user.first_name}} {{user.last_name}}, your id is: {{user_id}}
-        </h3>
-        <a href="/logout_user">Logout</a>
+        <div id="user-interface">
+            <h3>
+                Hello {{user.first_name}} {{user.last_name}}, your id is: {{user_id}}
+            </h3>
+            <form action="/logout_user">
+                <input class="user-form-submit" type="submit" value="Logout">
+            </form>
+        </div>
         <hr>
         
         <div id="message-ui" class="orangeoutline">
             <div id="user-stats">
-                <p>
-                    User: {{user.first_name}} {{user.last_name}}
+                <p id="user-stats-header">
+                    User: <span class="boldtext">{{user.first_name}} {{user.last_name}}</span> 
                 </p>
                 <p>
                     User ID: {{user_id}}
@@ -50,11 +54,12 @@
             <div id="message-scroller" class="orangeoutline">
 
                 {% for message in all_messages %}
+                <hr>
                 <div class="message-bubble redoutline">
                     <div class="message-bubble-data greenoutline">
                         <div class="redoutline">
                         </div>
-                        <p class="redoutline">
+                        <p class="boldtext redoutline">
                             {{message.user.first_name}} {{message.user.last_name}}
                         </p>
                         <div class="redoutline">
@@ -64,8 +69,7 @@
                         {{message.message}}
                     </p>
                     <div class="message-bubble-interface greenoutline">
-                        <form action="/view_message/{{message.id}}" method="post">
-                            {% csrf_token %}
+                        <form action="/view_message/{{message.id}}">
                             <input class="user-form-submit" type="submit" value="View Message">
                         </form>
                         {% if message.user == user %}
@@ -76,6 +80,11 @@
                         {% endif %}
                     </div>
                     <div class="message-bubble-icons greenoutline">
+                        {% for f in message.recieved_fireworks.all %}
+                        {% with 'message_app/img/'|add:f.firework.name|add:'.png' as image_static %}
+                        <img class="firework-icon" src="{% static image_static%}" alt="firework">
+                        {% endwith %}
+                        {% endfor %}
                     </div>
                 </div>
                 {% endfor %}

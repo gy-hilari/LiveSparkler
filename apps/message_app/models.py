@@ -33,11 +33,15 @@ class FireworkInventory(models.Model):
     def __repr__(self):
         return f"Firework: {self.firework.name} in User: {self.user.first_name} {self.user.last_name}'s inventory, recieved at: {self.created_at}"
 
+
+        # upon contribution of a firework to message, "trade-off"
+            # FireworkInventory data with DeployedFirework, then delete the entry
+
 class DeployedFirework(models.Model):
     # utilize this table to count total fireworks recieved for a user
         # message.recieved_fireworks.count in a for loop somewhere maybe
     message = models.ForeignKey(Message, related_name="recieved_fireworks", null=True)
-    user = models.ForeignKey(User, related_name="deployed_fireworks", null=True)
+    sent_by = models.ForeignKey(User, related_name="deployed_fireworks", null=True)
     firework = models.ForeignKey(Firework, related_name="deployments", null=True)
 
     created_at = models.DateTimeField(auto_now_add=True, null=True)

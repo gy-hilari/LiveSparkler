@@ -15,11 +15,17 @@
 
 <body>
     <div id="container">
-        <h3>
-            Welcome, {{user.first_name}} {{user.last_name}}, you got these cool fireworks!
-        </h3>
-        <a href="/logout_user">Logout</a>
-        <a href="/timeline">Timeline</a>
+        <div id="user-interface">
+            <h3>
+                Welcome, {{user.first_name}} {{user.last_name}}, you got these cool fireworks!
+            </h3>
+            <form action="/logout_user">
+                <input type="submit" value="Logout" class="user-form-submit">
+            </form>
+            <form action="/timeline">
+                <input type="submit" value="Timeline" class="user-form-submit">
+            </form>
+        </div>
         <hr>
 
         {% for name in random_fireworks %}

@@ -16,11 +16,17 @@
 <body>
 
     <div id="container">
-        <h3>
-            Viewing message #: {{message.id}}
-        </h3>
-        <a href="/logout_user">Logout</a>
-        <a href="/timeline">Timeline</a>
+        <div id="user-interface">
+            <h3>
+                Viewing message #: {{message.id}}
+            </h3>
+            <form action="/logout_user">
+                <input type="submit" value="Logout" class="user-form-submit">
+            </form>
+            <form action="/timeline">
+                <input type="submit" value="Timeline" class="user-form-submit">
+            </form>
+        </div>
         <hr>
 
         <h4>
@@ -29,6 +35,53 @@
         <p>
             {{message.message}}
         </p>
+
+        <hr>
+
+        <h4>
+            Fireworks Recieved:
+        </h4>
+
+        {% for item,value in message_firework_log.items %}
+        <div class="firework-count">
+            {% with 'message_app/img/'|add:item|add:'.png' as image_static %}
+            <p>
+                {{item}}
+            </p>
+            <img id="random-firework" class="firework-icon-med" src="{% static image_static %}" alt="firework">
+            <p>
+                Quantity: {{value}}
+            </p>
+            {% endwith %}
+        </div>
+        {% endfor %}
+
+        <hr>
+
+        {% if message.user != user %}
+        <h4>
+            Give <span class="redtext">{{message.user.first_name}} {{message.user.last_name}}</span> some fireworks!
+        </h4>
+        {% for item,value in user_firework_log.items %}
+        <div class="firework-count">
+            {% with 'message_app/img/'|add:item|add:'.png' as image_static %}
+            <p>
+                {{item}}
+            </p>
+
+            <form action="/deploy_firework/{{message.id}}/{{item}}" method="post">
+                {% csrf_token %}
+                <input class="firework-icon-med" type="image" src="{% static image_static %}" alt="Submit">
+            </form>
+
+            <p>
+                Quantity: {{value}}
+            </p>
+            {% endwith %}
+        </div>
+        {% endfor %}
+        {% endif %}
+
     </div>
 
 </body>

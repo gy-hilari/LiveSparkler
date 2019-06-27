@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 
-from .models import Message, Firework, FireworkInventory
+from .models import Message, Firework, FireworkInventory, DeployedFirework
 
 from ..login_app.models import User
 from django.contrib import messages
@@ -58,23 +58,39 @@ def delete_message(request, message_id):
         return redirect("/timeline")
 
 def view_message(request, message_id):
-    if request.method == "GET":
-        return redirect("/timeline")
-    if request.method == "POST":
+    try:
+        user_id = request.session['user_id']
+    except:
+        return redirect("/")
+
+    user = User.objects.get(id=user_id)
+    target_message = Message.objects.get(id=message_id) 
+
+    all_user_fireworks = FireworkInventory.objects.filter(user=user).order_by("-created_at")
+    user_firework_log = {}
+    for i in range(len(all_user_fireworks)):
         try:
-            user_id = request.session['user_id']
+            user_firework_log[all_user_fireworks[i].firework.name] += 1
         except:
-            return redirect("/")
+            user_firework_log[all_user_fireworks[i].firework.name] = 1
 
-        user = User.objects.get(id=user_id)
-        message = Message.objects.get(id=message_id) 
+    recieved_fireworks = DeployedFirework.objects.filter(message=target_message).order_by("-created_at")
+    message_firework_log = {}
+    for i in range(len(recieved_fireworks)):
+        try:
+            message_firework_log[recieved_fireworks[i].firework.name] += 1
+        except:
+            message_firework_log[recieved_fireworks[i].firework.name] = 1
+    
 
-        context = {
-            "user" : user,
-            "message" : message
-        }
+    context = {
+        "user" : user,
+        "message" : target_message,
+        "user_firework_log" : user_firework_log,
+        "message_firework_log" : message_firework_log
+    }
 
-        return render(request, "message_app/view-message.html", context)
+    return render(request, "message_app/view-message.html", context)
 
 def get_fireworks(request):
     try:
@@ -143,8 +159,6 @@ def view_user_fireworks(request):
         print("%*%*%*%*%*%*%*%*%*%*%*%")
         # user_firework_names.append(item)
 
-
-
     # for i in range(len(all_user_fireworks)):
         # user_firework_names.append(all_user_fireworks[i].firework.name)
 
@@ -156,5 +170,31 @@ def view_user_fireworks(request):
     }
 
     return render(request, "message_app/firework-inventory.html", context)
+
+def deploy_firework(request, message_id, firework_name):
+    if request.method == "GET":
+        return redirect("/timeline")
+    if request.method == "POST":
+        try:
+            user_id = request.session['user_id']
+        except:
+            return redirect("/")
+
+        user = User.objects.get(id=user_id)        
+        firework = Firework.objects.get(name=firework_name)
+        message = Message.objects.get(id=message_id)
+
+        firework_log = FireworkInventory.objects.filter(user=user, firework=firework).first()
+
+        DeployedFirework.objects.create(
+            message= message,
+            sent_by= user,
+            firework= firework
+        )
+
+        firework_log.delete()
+        
+        
+        return redirect("/view_message/" + message_id)
 
 
