@@ -81,13 +81,16 @@ def view_message(request, message_id):
             message_firework_log[recieved_fireworks[i].firework.name] += 1
         except:
             message_firework_log[recieved_fireworks[i].firework.name] = 1
+
+    total_recieved_fireworks = recieved_fireworks.count()
     
 
     context = {
         "user" : user,
         "message" : target_message,
         "user_firework_log" : user_firework_log,
-        "message_firework_log" : message_firework_log
+        "message_firework_log" : message_firework_log,
+        "total_recieved_fireworks" : total_recieved_fireworks,
     }
 
     return render(request, "message_app/view-message.html", context)

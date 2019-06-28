@@ -11,6 +11,38 @@
     <script src="{% static 'login_app/js/jquery.js ' %}"></script>
     <script src="{% static 'login_app/js/gabe-query.js ' %}"></script>
 
+    <script src="{% static 'message_app/unity/ViewMessage/TemplateData/UnityProgress.js' %}"></script>
+    <script src="{% static 'message_app/unity/ViewMessage/Build/UnityLoader.js' %}"></script>
+    <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'message_app/unity/ViewMessage/Build/LiveSparkler_message.json' %}", { onProgress: UnityProgress });
+
+        var fwCategories = [
+            "ninja_star",
+            "python",
+            "gunicorn",
+            "git_basher",
+            "stack_overflow"
+        ];
+
+        // function initUnity(){
+        //     countMax = document.getElementById("fwTotal").getAttribute("value");
+        //     console.log(countMax);
+
+        //     var i = 0;
+        //     while (i < fwCategories.length - 1) {
+        //         if (document.getElementById("fwType_" + fwCategories[i])) {
+        //             for (v = 0; v <= (document.getElementById("fwCount_" + fwCategories[i]).getAttribute("value")) - 1; v++) {
+        //                 console.log("%*%*%%*%*%*%**%*%*%*%*%%*")
+        //                 console.log("fwType_" + fwCategories[i])
+        //                 gameInstance.SendMessage("FireworkSpawner", "loadSequence", ("fwType_" + fwCategories[i]));
+        //             }
+        //         }
+        //         i++;
+        //     }
+        //     gameInstance.SendMessage("FireworkSpawner", "finishSequence", 1);
+        // };
+    </script>
+
 </head>
 
 <body>
@@ -32,25 +64,40 @@
         <h4>
             Message by: {{message.user.first_name}} {{message.user.last_name}}
         </h4>
-        <p>
-            {{message.message}}
-        </p>
+
+        <div class="webgl-content">
+            <div id="gameContainer" style="width: 960px; height: 440px"></div>
+        </div>
+
+        <!-- <div class="redoutline" id="main-player-message-firework">
+            <p>
+                {{message.message}}
+            </p>
+        </div> -->
 
         <hr>
+
+        <h4>
+            Total Fireworks: {{total_recieved_fireworks}}
+        </h4>
 
         <h4>
             Fireworks Recieved:
         </h4>
 
+
+        <input id="fwTotal" type="hidden" value="{{total_recieved_fireworks}}">
+
         {% for item,value in message_firework_log.items %}
         <div class="firework-count">
             {% with 'message_app/img/'|add:item|add:'.png' as image_static %}
+            <img class="firework-icon" src="{% static image_static %}" alt="firework">
+
+            <input id="fwType_{{item}}" type="hidden" value="{{item}}">
+            <input id="fwCount_{{item}}" type="hidden" value="{{value}}">
+
             <p>
-                {{item}}
-            </p>
-            <img id="random-firework" class="firework-icon-med" src="{% static image_static %}" alt="firework">
-            <p>
-                Quantity: {{value}}
+                x {{value}}
             </p>
             {% endwith %}
         </div>

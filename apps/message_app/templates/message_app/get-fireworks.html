@@ -5,11 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Timeline Index</title>
+    <title>Get Fireworks</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'login_app/css/style.css' %}">
     <script src="{% static 'login_app/js/jquery.js ' %}"></script>
     <script src="{% static 'login_app/js/gabe-query.js ' %}"></script>
+
+    <script src="{% static 'message_app/unity/GetFireworks/TemplateData/UnityProgress.js' %}"></script>
+    <script src="{% static 'message_app/unity/GetFireworks/Build/UnityLoader.js' %}"></script>
+    <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'message_app/unity/GetFireworks/Build/GetFireworks_v0.3.json' %}", { onProgress: UnityProgress });
+    </script>
 
 </head>
 
@@ -27,12 +33,20 @@
             </form>
         </div>
         <hr>
-
-        {% for name in random_fireworks %}
-        {% with 'message_app/img/'|add:name|add:'.png' as image_static %}
-        <img id="random-firework" class="firework-icon-med" src="{% static image_static %}" alt="firework">
-        {% endwith %}
-        {% endfor %}
+        <div class="get-fw-div">
+            {% for name in random_fireworks %}
+            {% with 'message_app/img/'|add:name|add:'.png' as image_static %}
+            <img class="firework-icon" src="{% static image_static %}" alt="firework">
+            {% endwith %}
+            {% endfor %}
+        </div>
+        <div class="webgl-content">
+            <div id="gameContainer" style="width: 960px; height: 440px"></div>
+        </div>
+        <!-- <iframe class="my-iframe" src="https://livesparkler-getfireworks.s3-us-west-2.amazonaws.com/build2/index.html" overflow:hidden;
+            width="100%" height="440px" title="get-fireworks" scrolling="no" overflow="hidden" overflow-y="hidden"
+            allowfullscreen="false";></iframe> -->
+        <hr>
     </div>
 
 </body>

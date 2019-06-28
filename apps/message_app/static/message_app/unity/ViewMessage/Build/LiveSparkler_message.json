@@ -1,0 +1,13 @@
+{
+"companyName": "Gabe at the Dojo",
+"productName": "LiveSparkler_Message",
+"dataUrl": "LiveSparkler_message.data.unityweb",
+"wasmCodeUrl": "LiveSparkler_message.wasm.code.unityweb",
+"wasmFrameworkUrl": "LiveSparkler_message.wasm.framework.unityweb",
+"TOTAL_MEMORY": 301989888,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"}
+}

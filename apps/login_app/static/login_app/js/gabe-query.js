@@ -23,6 +23,10 @@ $(document).ready(
         (function($){
             $.fn.randomImage = function(){
 
+                if (document.getElementById("id")){
+
+                }
+
                 var i = Math.floor(Math.random()*firework_names.length);
                 this.attr('src', "static/message_app/img/"+ firework_names[i]+ ".png");
                 return this;
