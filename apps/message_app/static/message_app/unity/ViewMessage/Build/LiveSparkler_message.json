@@ -4,7 +4,7 @@
 "dataUrl": "LiveSparkler_message.data.unityweb",
 "wasmCodeUrl": "LiveSparkler_message.wasm.code.unityweb",
 "wasmFrameworkUrl": "LiveSparkler_message.wasm.framework.unityweb",
-"TOTAL_MEMORY": 301989888,
+"TOTAL_MEMORY": 268435456,
 "graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},
 "splashScreenStyle": "Dark",
