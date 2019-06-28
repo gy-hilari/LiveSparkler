@@ -1,6 +1,10 @@
-/* body{
-    background-color: blue;
-} */
+body{
+    background-color: rgb(2, 6, 15);
+}
+
+p, h3, h4, h2, h1{
+    color: white;
+}
 
 *{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -9,6 +13,7 @@
 button:focus, input:focus, a:focus, textarea:focus{
     outline: 0;
 }
+
 
 /* dev tools  */
 
@@ -23,6 +28,10 @@ button:focus, input:focus, a:focus, textarea:focus{
 .redoutline{
     outline: 1px dotted red;
 } */
+
+.whitetext{
+    color: white;
+}
 
 .greentext{
     color: green;
@@ -90,7 +99,7 @@ button:focus, input:focus, a:focus, textarea:focus{
 .user-form-submit{
     font-size: 110%;
     color: white;
-    background-image: linear-gradient(rgb(119, 119, 211), rgb(66, 66, 119));
+    background-image: linear-gradient(rgb(105, 162, 243), rgb(66, 81, 119));
     border-radius: 15px;
 }
 
@@ -273,7 +282,7 @@ button:focus, input:focus, a:focus, textarea:focus{
 }
 
 .firework-icon{
-    width: 15px;
+    width: 30px;
 }
 
 .firework-icon-med{

@@ -22,6 +22,13 @@
                 <input class="user-form-submit" type="submit" value="Logout">
             </form>
         </div>
+        {% if messages %}
+        {% for error in messages %}
+        <p>
+            {{error}}
+        </p>
+        {% endfor %}
+        {% endif %}
         <hr>
         
         <div id="message-ui" class="orangeoutline">

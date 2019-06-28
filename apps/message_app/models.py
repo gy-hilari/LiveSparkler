@@ -2,10 +2,23 @@ from __future__ import unicode_literals
 from django.db import models
 from ..login_app.models import User
 
+class MessageManager(models.Manager):
+    def message_validator(self, postData):
+        errors = {}
+
+        if len(postData["message-text"]) == 0:
+            errors["no-message"] = "Message cannot be empty!"
+        if len(postData["message-text"]) > 280:
+            errors["char-limit"] = "Message limit is 280 characters!"
+        
+        return errors
+
 class Message(models.Model):
     user = models.ForeignKey(User, related_name="message", null=True)
 
     message = models.CharField(max_length=280, null=True)
+
+    objects = MessageManager()
 
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)

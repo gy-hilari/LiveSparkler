@@ -32,14 +32,20 @@ def new_message(request):
     except:
         return redirect("/")
 
-    user = User.objects.get(id=user_id)
+    errors = Message.objects.message_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+            return redirect("/timeline") 
+    else:
+        user = User.objects.get(id=user_id)
 
-    created_message = Message.objects.create(
-        user= user,
-        message= request.POST["message-text"]
-    )
+        created_message = Message.objects.create(
+            user= user,
+            message= request.POST["message-text"]
+        )
 
-    return redirect("/timeline")
+        return redirect("/timeline")
 
 def delete_message(request, message_id):
     if request.method == "GET":
