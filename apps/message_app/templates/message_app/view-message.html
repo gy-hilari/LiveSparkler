@@ -23,7 +23,6 @@
             "git_basher",
             "stack_overflow"
         ];
-
         // function initUnity(){
         //     countMax = document.getElementById("fwTotal").getAttribute("value");
         //     console.log(countMax);
@@ -65,9 +64,17 @@
             Message by: {{message.user.first_name}} {{message.user.last_name}}
         </h4>
 
+        {% if total_recieved_fireworks > 0 %}
         <div class="webgl-content">
             <div id="gameContainer" style="width: 960px; height: 440px"></div>
         </div>
+        {% endif %}
+        {% if total_recieved_fireworks == 0 %}
+        <p>
+            This message has no fireworks yet!
+        </p>
+        {% endif %}
+
 
         <!-- <div class="redoutline" id="main-player-message-firework">
             <p>
@@ -92,6 +99,7 @@
         <div class="firework-count">
             {% with 'message_app/img/'|add:item|add:'.png' as image_static %}
             <img class="firework-icon" src="{% static image_static %}" alt="firework">
+            {% endwith %}
 
             <input id="fwType_{{item}}" type="hidden" value="{{item}}">
             <input id="fwCount_{{item}}" type="hidden" value="{{value}}">
@@ -99,7 +107,6 @@
             <p>
                 x {{value}}
             </p>
-            {% endwith %}
         </div>
         {% endfor %}
 
