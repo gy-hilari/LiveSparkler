@@ -66,8 +66,8 @@ button:focus, input:focus, a:focus, textarea:focus{
     vertical-align: top;
 
     padding: 20px 15px 20px 15px;
-    border: 1px solid black;
-    border-radius: 15px;
+    /* border: 1px solid black;
+    border-radius: 15px; */
 }
 
 .login-user-form{
@@ -78,8 +78,8 @@ button:focus, input:focus, a:focus, textarea:focus{
     vertical-align: middle;
 
     padding: 20px 15px 20px 15px;
-    border: 1px solid black;
-    border-radius: 15px;
+    /* border: 1px solid black; */
+    /* border-radius: 15px; */
 }
 
 .user-form input, .user-form select, .user-form form, .user-form label{
@@ -198,8 +198,8 @@ button:focus, input:focus, a:focus, textarea:focus{
 #user-stats{
     width: 400px;
     height: 252px;
-    border: 1px solid black;
-    border-radius: 15px;
+    /* border: 1px solid black;
+    border-radius: 15px; */
 }
 
 #user-stats-header{

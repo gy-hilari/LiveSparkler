@@ -8,16 +8,17 @@
     <title>Timeline Index</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'login_app/css/style.css' %}">
-    
+
 </head>
 
 <body>
-    
+
     <div id="container" class="greenoutline">
+        <h1>
+            LiveSparkler
+        </h1>
+        <hr>
         <div id="user-interface">
-            <h3>
-                Hello {{user.first_name}} {{user.last_name}}, your id is: {{user_id}}
-            </h3>
             <form action="/logout_user">
                 <input class="user-form-submit" type="submit" value="Logout">
             </form>
@@ -30,11 +31,11 @@
         {% endfor %}
         {% endif %}
         <hr>
-        
+
         <div id="message-ui" class="orangeoutline">
             <div id="user-stats">
                 <p id="user-stats-header">
-                    User: <span class="boldtext">{{user.first_name}} {{user.last_name}}</span> 
+                    User: <span class="boldtext">{{user.first_name}} {{user.last_name}}</span>
                 </p>
                 <p>
                     User ID: {{user_id}}
@@ -51,7 +52,8 @@
             </div>
             <form action="/new_message" class="user-form message-form" method="POST">
                 {% csrf_token %}
-                <textarea class="user-form-textbox" name="message-text" id="" cols="30" rows="10" placeholder="New Message"></textarea>
+                <textarea class="user-form-textbox" name="message-text" id="" cols="30" rows="10"
+                    placeholder="New Message"></textarea>
                 <input type="submit" value="Submit" class="user-form-submit">
             </form>
         </div>
